@@ -1,0 +1,91 @@
+# E-Commerce Website Documentation
+
+## **Project Overview**
+
+This project is an **e-commerce website** where users can browse products, add items to a cart (stored in `localStorage`), and place orders without needing to create an account. The backend is built using **Node.js, Express.js, and MongoDB (Atlas)**.
+
+## **Features**
+
+### **User Features (Anonymous Shopping)**
+
+- View products.
+- Click "Read More" to see product details.
+- Add items to the cart (stored in `localStorage`).
+- Checkout without registration.
+- After checkout, the admin will contact the user for payment.
+
+### **Admin Features**
+
+- Add, edit, and delete products.
+- View and manage orders.
+- Contact customers after checkout to complete the payment process.
+
+## **Technology Stack**
+
+- **Frontend:** HTML, CSS, JavaScript
+- **Backend:** Node.js, Express.js, MongoDB (Atlas)
+- **Database Collections:** Products, Orders
+
+## **Database Structure**
+
+### **Products Collection** (`products`)
+
+```json
+{
+  "_id": ObjectId,
+  "name": "Product Name",
+  "price": 5000,
+  "description": "Product description",
+  "image": "product.jpg",
+  "category": "Category Name"
+}
+```
+
+### **Orders Collection** (`orders`)
+
+```json
+{
+  "_id": ObjectId,
+  "items": [
+    {
+      "productId": "ProductID",
+      "quantity": 2
+    }
+  ],
+  "totalAmount": 5000,
+  "status": "Pending",
+  "customerContact": "Phone or Email",
+  "createdAt": "2025-03-06T09:32:01.320Z"
+}
+```
+
+## **API Endpoints**
+
+### **Product Routes** (`/api/products`)
+
+- `GET /` → Get all products
+- `POST /` → Add a new product (Admin only)
+- `PUT /:id` → Update a product (Admin only)
+- `DELETE /:id` → Delete a product (Admin only)
+
+### **Order Routes** (`/api/orders`)
+
+- `POST /` → Place an order (No user authentication required)
+- `GET /` → Get all orders (Admin only)
+- `PUT /:id` → Update order status (Admin only)
+
+## **Checkout & Payment Process**
+
+- Customers do not need to create an account.
+- After adding products to the cart, they proceed to checkout.
+- At checkout, they provide their **contact information**.
+- The admin will **contact the customer** to finalize the payment and order.
+
+## **Next Steps**
+
+- Implement the frontend.
+- Connect the frontend to the backend APIs.
+- Deploy the application.
+
+---
+🚀 **This document will be updated as development progresses.**
